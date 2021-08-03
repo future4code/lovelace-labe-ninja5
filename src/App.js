@@ -6,6 +6,15 @@ import Carrinho from "./components/Carrinho";
 import TelaInicial from "./components/TelaInicial";
 import Header from "./components/Header";
 import TelaServico from "./components/Servico";
+import styled from "styled-components";
+
+const Container = styled.div`
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Revalia", cursive;
+`;
 
 export default class App extends Component {
   state = {
@@ -33,11 +42,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <Header trocarTela={this.trocarTela} />
-
         {this.renderizarTelaAtual()}
-      </div>
+      </Container>
     );
   }
 }
