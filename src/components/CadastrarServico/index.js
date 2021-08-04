@@ -38,6 +38,12 @@ export default class CadastrarServico extends Component {
     inputPrazo: ""
   }
 
+  selectRef = null
+  
+  clearValue = () => {
+    this.selectRef.select.clearValue();
+  }
+
   atualizaTitulo = (e) => {
     this.setState({ inputTitulo: e.target.value })
   }
@@ -76,6 +82,7 @@ export default class CadastrarServico extends Component {
           timer: 2500
         })
         this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: "" })
+        this.clearValue()
       }).catch(err => {
         console.log(err.response.data)
         Swal.fire({
@@ -111,7 +118,9 @@ export default class CadastrarServico extends Component {
             Formas de pagamento*
             <ContainerSelect>
               <Select
-                value={this.state.inputFormaPagamento}
+                ref={ref => {
+                  this.selectRef = ref;
+                }}
                 onChange={this.atualizaPagamento}
                 closeMenuOnSelect={false}
                 components={animatedComponents}
@@ -129,7 +138,6 @@ export default class CadastrarServico extends Component {
                 })}
               />
             </ContainerSelect>
-
           </label>
           <label>
             Prazo*
