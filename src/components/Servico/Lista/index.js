@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios"
-import { Button, Carrinho, CardList, ContainerGeneral, ContainerButton } from "./estilo";
+import { Button, Carrinho, CardList, ContainerGeneral, ContainerButton, ContainerFiltros, ContainerBusca } from "./estilo";
+import { Titulo } from "../../TelaInicial/estilo";
 
 const url = "https://labeninjas.herokuapp.com/jobs"
 const headers = {
@@ -54,10 +55,47 @@ export default class ListaServico extends Component {
     })
 
     return (
-
+      <>
+      <ContainerBusca>
+      <input
+      placeholder='Busca'
+      type='text'
+      img=''
+      />
+    </ContainerBusca>
+        <ContainerFiltros>
+          <div>
+          <p>Ordenar Por:</p>
+            <select>
+              <option>Título</option>
+              <option>Prazo</option>
+              <option>Preço Crescente</option>
+              <option>Preço Decrescente</option>
+            </select>
+            </div>
+            <div>
+          <p> Valor míninmo: </p>
+                    <input 
+                    name={"valorMinimo"}
+                    type="number"
+                    // onChange={}
+                    // value={}
+                    />
+          </div>
+          <div>
+          <p>Valor máximo:</p>
+                    <input 
+                    name={"valorMaximo"}
+                    type="number"
+                    // onChange={}
+                    // value={}
+                    />
+          </div>
+          </ContainerFiltros>
       <ContainerGeneral>
           {listServices}
       </ContainerGeneral>
+      </>
     );
   }
 }

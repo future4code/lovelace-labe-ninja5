@@ -9,11 +9,56 @@ export const ContainerGeneral = styled.div`
     padding: 25px;
     gap: 20px;
 `
+export const ContainerFiltros = styled.div`
+    grid-column: 1/span4;
+    display:flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    gap:0 10px;
+    text-align:center ;
 
+   input{
+     border-radius: 10px;
+     width:350px;
+     height:50px;
+     border:none;
+     
+   }
+
+   select{
+    border-radius: 10px;
+     width:100px;
+     height:50px;
+     border:none;
+     outline: 0;
+     background-color: #3F3B3B;
+     color:white;
+     text-align: center;
+   }
+
+` 
+
+export const ContainerBusca = styled.div`
+    display:flex;
+    justify-content: center;
+    margin-top: 15px;
+
+    >input{
+      border-radius: 10px;
+      width: 500px;
+      height:50px ;
+      border: none;
+    }
+   
+
+
+` 
 export const ContainerButton = styled.div`
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    
 `
 
 export const CardList = styled.div`
