@@ -68,7 +68,7 @@ export default class CadastrarServico extends Component {
     const body = {
       title: this.state.inputTitulo,
       description: this.state.inputDescricao,
-      price: this.state.inputPreco,
+      price: Number(this.state.inputPreco),
       paymentMethods: this.state.inputFormaPagamento.map(objeto => objeto.value),
       dueDate: this.state.inputPrazo
     }
@@ -84,6 +84,7 @@ export default class CadastrarServico extends Component {
         this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: "" })
         this.clearValue()
       }).catch(err => {
+        console.log(err.response.data)
         Swal.fire({
           icon: 'error',
           title: 'OOOPS...',
