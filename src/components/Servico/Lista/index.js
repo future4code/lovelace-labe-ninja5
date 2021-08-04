@@ -21,6 +21,7 @@ const headers = {
 export default class ListaServico extends Component {
   state = {
     listService: [],
+    estaCarregando: true,
   };
 
   componentDidMount() {
@@ -30,8 +31,7 @@ export default class ListaServico extends Component {
   getJobs = async () => {
     try {
       const res = await axios.get(url, headers);
-      this.setState({ listService: res.data.jobs });
-      console.log(res.data.jobs);
+      this.setState({ listService: res.data.jobs, estaCarregando: false });
     } catch (err) {
       console.log(err);
     }
@@ -68,41 +68,13 @@ export default class ListaServico extends Component {
     });
 
     return (
-      <>
-        <ContainerBusca>
-          <input placeholder="Busca" type="text" />
-        </ContainerBusca>
-        <ContainerFiltros>
-          <div>
-            <p>Ordenar Por:</p>
-            <select>
-              <option>Título</option>
-              <option>Prazo</option>
-              <option>Preço Crescente</option>
-              <option>Preço Decrescente</option>
-            </select>
-          </div>
-          <div>
-            <p> Valor míninmo: </p>
-            <input
-              name={"valorMinimo"}
-              type="number"
-              // onChange={}
-              // value={}
-            />
-          </div>
-          <div>
-            <p>Valor máximo:</p>
-            <input
-              name={"valorMaximo"}
-              type="number"
-              // onChange={}
-              // value={}
-            />
-          </div>
-        </ContainerFiltros>
-        <ContainerGeneral>{listServices}</ContainerGeneral>
-      </>
+      <ContainerGeneral>
+        {this.state.estaCarregando ? (
+          <p>Carregando serviços...</p>
+        ) : (
+          listServices
+        )}
+      </ContainerGeneral>
     );
   }
 }
