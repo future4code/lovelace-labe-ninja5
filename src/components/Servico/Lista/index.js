@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import {
   Button,
+  AddCarrinho,
   CardList,
   ContainerGeneral,
   ContainerButton,
-  AddCarrinho,
+  ContainerFiltros,
+  ContainerBusca,
 } from "./estilo";
+import { Titulo } from "../../TelaInicial/estilo";
 
 const url = "https://labeninjas.herokuapp.com/jobs";
 const headers = {

@@ -18,7 +18,7 @@
     "react-jss": "8.0.0",
     "react-scripts": "^3.4.3",
     "react-toastify": "^7.0.4",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
     "react-select": "^4.3.1",
     "sweetalert2": "^11.1.2"
   },
