@@ -68,7 +68,7 @@ export default class CadastrarServico extends Component {
     const body = {
       title: this.state.inputTitulo,
       description: this.state.inputDescricao,
-      price: this.state.inputPreco,
+      price: Number(this.state.inputPreco),
       paymentMethods: this.state.inputFormaPagamento.map(objeto => objeto.value),
       dueDate: this.state.inputPrazo
     }
@@ -148,7 +148,6 @@ export default class CadastrarServico extends Component {
           <Button onClick={() => this.props.trocarTela('inicial')}>Voltar</Button>
           <Button onClick={this.criaServico}>Cadastrar</Button>
         </ButtonBox>
-
       </Container>
     )
   }
