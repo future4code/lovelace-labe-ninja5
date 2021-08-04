@@ -143,7 +143,6 @@ export default class CadastrarServico extends Component {
             Prazo*
             <input type="date" name="prazo" value={this.state.inputPrazo} onChange={this.atualizaPrazo} />
           </label>
-
         </form>
         <ButtonBox>
           <Button onClick={() => this.props.trocarTela('inicial')}>Voltar</Button>
