@@ -84,7 +84,6 @@ export default class CadastrarServico extends Component {
         this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: "" })
         this.clearValue()
       }).catch(err => {
-        console.log(err.response.data)
         Swal.fire({
           icon: 'error',
           title: 'OOOPS...',
@@ -143,13 +142,11 @@ export default class CadastrarServico extends Component {
             Prazo*
             <input type="date" name="prazo" value={this.state.inputPrazo} onChange={this.atualizaPrazo} />
           </label>
-
         </form>
         <ButtonBox>
           <Button onClick={() => this.props.trocarTela('inicial')}>Voltar</Button>
           <Button onClick={this.criaServico}>Cadastrar</Button>
         </ButtonBox>
-
       </Container>
     )
   }
