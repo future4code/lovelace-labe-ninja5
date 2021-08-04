@@ -14,7 +14,12 @@ export default class TelaServico extends Component {
   renderizarTelaDetalhes = () => {
     switch (this.state.tela) {
       case "lista":
-        return <ListaServico trocarTela={this.trocarTela} />;
+        return (
+          <ListaServico
+            carrinho={this.props.carrinho}
+            adicionarAoCarrinho={this.props.adicionarAoCarrinho}
+          />
+        );
       case "detalhes":
         return <DetalheServico trocarTela={this.trocarTela} />;
     }

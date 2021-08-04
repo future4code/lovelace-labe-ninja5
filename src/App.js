@@ -6,7 +6,11 @@ import Carrinho from "./components/Carrinho";
 import TelaInicial from "./components/TelaInicial";
 import Header from "./components/Header";
 import TelaServico from "./components/Servico";
+
 import styled from "styled-components";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const Container = styled.div`
   background-color: #e8e8e8;
@@ -19,11 +23,26 @@ const Container = styled.div`
 export default class App extends Component {
   state = {
     tela: "inicial",
+    carrinho: [],
   };
 
   trocarTela = (tela) => {
     this.setState({ tela: tela });
   };
+
+  adicionarAoCarrinho = (item) => {
+    const carrinhoAtualizado = [...this.state.carrinho, item];
+
+    this.setState({ carrinho: carrinhoAtualizado });
+
+    toast.success("Serviço adicionado ao carrinho", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  };
+
+  // deletarItemCarrinho = (item.id) => {
+
+  // }
 
   renderizarTelaAtual = () => {
     switch (this.state.tela) {
@@ -32,9 +51,19 @@ export default class App extends Component {
       case "cadastrar":
         return <CadastrarServico trocarTela={this.trocarTela} />;
       case "lista":
-        return <TelaServico />;
+        return (
+          <TelaServico
+            carrinho={this.state.carrinho}
+            adicionarAoCarrinho={this.adicionarAoCarrinho}
+          />
+        );
       case "carrinho":
-        return <Carrinho trocarTela={this.trocarTela} />;
+        return (
+          <Carrinho
+            carrinho={this.state.carrinho}
+            trocarTela={this.trocarTela}
+          />
+        );
       default:
         return null;
     }
@@ -45,6 +74,7 @@ export default class App extends Component {
       <Container>
         <Header trocarTela={this.trocarTela} />
         {this.renderizarTelaAtual()}
+        <ToastContainer />
       </Container>
     );
   }
