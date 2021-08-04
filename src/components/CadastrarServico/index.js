@@ -38,6 +38,12 @@ export default class CadastrarServico extends Component {
     inputPrazo: ""
   }
 
+  selectRef = null
+  
+  clearValue = () => {
+    this.selectRef.select.clearValue();
+  }
+
   atualizaTitulo = (e) => {
     this.setState({ inputTitulo: e.target.value })
   }
@@ -73,9 +79,10 @@ export default class CadastrarServico extends Component {
           icon: 'success',
           title: res.data.message,
           showConfirmButton: false,
-          timer: 2500
+          timer: 2000
         })
         this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: "" })
+        this.clearValue()
       }).catch(err => {
         console.log(err.response.data)
         Swal.fire({
@@ -111,7 +118,9 @@ export default class CadastrarServico extends Component {
             Formas de pagamento*
             <ContainerSelect>
               <Select
-                value={this.state.inputFormaPagamento}
+                ref={ref => {
+                  this.selectRef = ref;
+                }}
                 onChange={this.atualizaPagamento}
                 closeMenuOnSelect={false}
                 components={animatedComponents}
@@ -129,13 +138,11 @@ export default class CadastrarServico extends Component {
                 })}
               />
             </ContainerSelect>
-
           </label>
           <label>
             Prazo*
             <input type="date" name="prazo" value={this.state.inputPrazo} onChange={this.atualizaPrazo} />
           </label>
-
         </form>
         <ButtonBox>
           <Button onClick={() => this.props.trocarTela('inicial')}>Voltar</Button>
