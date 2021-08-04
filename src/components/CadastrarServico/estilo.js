@@ -5,6 +5,8 @@ export const Container = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  max-width: 500px;
+  width: 100%;
 
   form {
     margin-top: 50px;
@@ -18,7 +20,7 @@ export const Container = styled.div`
     > input,
     select {
       margin-top: 10px;
-      padding: 10px;
+      padding: 5px 5px;
       border-radius: 10px;
       border: none;
       box-shadow: 0 0 3px 1px;

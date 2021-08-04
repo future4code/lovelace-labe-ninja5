@@ -67,7 +67,7 @@ export const Titulo = styled.h1`
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   font-size: 50px;
   margin-bottom: 0;
-  line-height: 0;
+  line-height: 1;
 
   @media screen and (max-width: 576px) {
     font-size: 30px;
@@ -75,6 +75,8 @@ export const Titulo = styled.h1`
 `;
 
 export const Slogan = styled.p`
+  align-items: center;
+  display: flex;
   margin-top: 40px;
 
   @media screen and (max-width: 576px) {

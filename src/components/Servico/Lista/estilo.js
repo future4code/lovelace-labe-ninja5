@@ -2,11 +2,13 @@
 import styled from "styled-components";
 import { MdAddShoppingCart } from "react-icons/md";
 
+import { BsSearch } from "react-icons/bs";
+
 export const ContainerGeneral = styled.div`
   display: grid;
   text-align: center;
   grid-template-columns: repeat(4, 1fr);
-  padding: 25px;
+  padding: 20px;
   gap: 20px;
 
   @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -17,64 +19,86 @@ export const ContainerGeneral = styled.div`
   }
 `;
 export const ContainerFiltros = styled.div`
-  grid-column: 1 / span4;
+  align-items: flex-end;
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  gap: 0 10px;
-  text-align: center;
+  justify-content: flex-end;
+  padding: 40px 20px 0;
+  gap: 20px;
 
   input {
     border-radius: 10px;
-    width: 350px;
-    height: 50px;
     border: none;
+    padding: 10px;
+    outline: none;
   }
 
   select {
     border-radius: 10px;
-    width: 100px;
-    height: 50px;
     border: none;
     outline: 0;
-    background-color: #3f3b3b;
-    color: white;
     text-align: center;
+    padding: 10px;
+    outline: none;
+  }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  > label {
+    font-size: 10px;
+    margin-bottom: 10px;
   }
 `;
 
 export const ContainerBusca = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
+  position: relative;
+  width: 40%;
+  margin-right: auto;
 
   > input {
     border-radius: 10px;
-    width: 500px;
-    height: 50px;
+    padding: 10px 10px 10px 36px;
     border: none;
+    outline: none;
+    width: 100%;
+  }
+
+  > svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
   }
 `;
+export const Lupa = styled(BsSearch)``;
+
 export const ContainerButton = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
 `;
 
 export const CardList = styled.div`
-  height: 168px;
   background-color: #3f3b3b;
   border-radius: 10px;
   margin: 0 auto;
-  padding: 15px;
+  color: #fff;
+  padding: 30px 20px 20px;
 
   h4,
   p {
-    margin-top: 0px;
-    color: white;
     font-size: 13px;
-    padding: 10px;
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -90,9 +114,10 @@ export const AddCarrinho = styled(MdAddShoppingCart)`
 
 export const Button = styled.button`
   background-color: transparent;
+  color: #fff;
   border: none;
   cursor: pointer;
-  margin-right: 30px;
+  padding: 5px;
 
   &:hover ${AddCarrinho} {
     transform: scale(1.2);
@@ -110,4 +135,9 @@ export const Button = styled.button`
   @media screen and (max-width: 576px) {
     margin-right: 10px;
   }
+`;
+
+export const Price = styled.span`
+  color: #95de8e;
+  font-size: 16px;
 `;

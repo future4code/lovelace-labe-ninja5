@@ -7,10 +7,18 @@ import TelaInicial from "./components/TelaInicial";
 import Header from "./components/Header";
 import TelaServico from "./components/Servico";
 
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 const Container = styled.div`
   background-color: #e8e8e8;
@@ -38,7 +46,7 @@ export default class App extends Component {
       this.atualizarTotalCarrinho();
     });
 
-    toast.success("Serviço adicionado ao carrinho", {
+    toast.success("Serviço adicionado ao carrinho com sucesso!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
   };
@@ -48,7 +56,7 @@ export default class App extends Component {
     this.setState({ carrinho: novoCarrinho }, () => {
       this.atualizarTotalCarrinho();
     });
-    toast.success("Serviço deletado", {
+    toast.success("Serviço removido do carrinho com sucesso!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
   };
@@ -97,11 +105,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <Container>
-        <Header trocarTela={this.trocarTela} />
-        {this.renderizarTelaAtual()}
-        <ToastContainer />
-      </Container>
+      <>
+        <GlobalStyle />
+        <Container>
+          <Header trocarTela={this.trocarTela} />
+          {this.renderizarTelaAtual()}
+          <ToastContainer />
+        </Container>
+      </>
     );
   }
 }

@@ -17,6 +17,7 @@ export default class TelaServico extends Component {
         return (
           <ListaServico
             carrinho={this.props.carrinho}
+            trocarTela={this.trocarTela}
             adicionarAoCarrinho={this.props.adicionarAoCarrinho}
           />
         );

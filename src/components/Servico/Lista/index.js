@@ -8,8 +8,10 @@ import {
   ContainerButton,
   ContainerFiltros,
   ContainerBusca,
+  Form,
+  Lupa,
+  Price,
 } from "./estilo";
-import { Titulo } from "../../TelaInicial/estilo";
 
 const url = "https://labeninjas.herokuapp.com/jobs";
 const headers = {
@@ -48,12 +50,11 @@ export default class ListaServico extends Component {
           <CardList>
             <h4>{title}</h4>
             <p>
-              Até {dueDate} por <font color="#95de8e">R$</font>
-              {price}
+              Até {dueDate} por <Price>R$ {price}</Price>
             </p>
             <ContainerButton>
               <Button onClick={() => this.props.trocarTela("detalhes")}>
-                <font color="white">Ir para detalhe</font>
+                Ver mais
               </Button>
               <Button
                 onClick={() => this.props.adicionarAoCarrinho(servico)}
@@ -68,13 +69,50 @@ export default class ListaServico extends Component {
     });
 
     return (
-      <ContainerGeneral>
-        {this.state.estaCarregando ? (
-          <p>Carregando serviços...</p>
-        ) : (
-          listServices
-        )}
-      </ContainerGeneral>
+      <>
+        <ContainerFiltros>
+          <ContainerBusca>
+            <Lupa />
+            <input placeholder="Busca" type="text"></input>
+          </ContainerBusca>
+
+          <Form>
+            <label>Ordenar:</label>
+            <select>
+              <option>Título</option>
+              <option>Prazo</option>
+              <option>Preço Crescente</option>
+              <option>Preço Decrescente</option>
+            </select>
+          </Form>
+          <Form>
+            <label> Valor mínimo: </label>
+            <input
+              name={"valorMinimo"}
+              type="number"
+              // onChange={}
+              // value={}
+            />
+          </Form>
+          <Form>
+            <label>Valor máximo:</label>
+            <input
+              name={"valorMaximo"}
+              type="number"
+              // onChange={}
+              // value={}
+            />
+          </Form>
+        </ContainerFiltros>
+
+        <ContainerGeneral>
+          {this.state.estaCarregando ? (
+            <p>Carregando serviços...</p>
+          ) : (
+            listServices
+          )}
+        </ContainerGeneral>
+      </>
     );
   }
 }
