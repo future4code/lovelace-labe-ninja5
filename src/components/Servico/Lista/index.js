@@ -18,6 +18,7 @@ const headers = {
 export default class ListaServico extends Component {
   state = {
     listService: [],
+    estaCarregando: true,
   };
 
   componentDidMount() {
@@ -27,8 +28,7 @@ export default class ListaServico extends Component {
   getJobs = async () => {
     try {
       const res = await axios.get(url, headers);
-      this.setState({ listService: res.data.jobs });
-      console.log(res.data.jobs);
+      this.setState({ listService: res.data.jobs, estaCarregando: false });
     } catch (err) {
       console.log(err);
     }
@@ -64,6 +64,14 @@ export default class ListaServico extends Component {
       );
     });
 
-    return <ContainerGeneral>{listServices}</ContainerGeneral>;
+    return (
+      <ContainerGeneral>
+        {this.state.estaCarregando ? (
+          <p>Carregando serviços...</p>
+        ) : (
+          listServices
+        )}
+      </ContainerGeneral>
+    );
   }
 }
