@@ -79,7 +79,7 @@ export default class CadastrarServico extends Component {
           icon: 'success',
           title: res.data.message,
           showConfirmButton: false,
-          timer: 2500
+          timer: 2000
         })
         this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: "" })
         this.clearValue()
