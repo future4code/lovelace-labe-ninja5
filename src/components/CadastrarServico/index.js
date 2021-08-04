@@ -10,7 +10,6 @@ import {
   ButtonBox,
 } from "./estilo";
 
-
 const options = [
   { value: 'Cartão de Crédito', label: 'Cartão de Crédito' },
   { value: 'Cartão de Débito', label: 'Cartão de Débito' },
@@ -52,7 +51,6 @@ export default class CadastrarServico extends Component {
   }
 
   atualizaPagamento = (option) => {
-    // console.log(value)
     this.setState({ inputFormaPagamento: option })
   }
 
@@ -92,9 +90,7 @@ export default class CadastrarServico extends Component {
 
   render() {
 
-
     return (
-
 
       <Container>
         <h1>Cadastre seu Serviço</h1>
