@@ -32,7 +32,6 @@ export default class App extends Component {
   state = {
     tela: "inicial",
     carrinho: [],
-    totalCarrinho: null,
   };
 
   componentDidMount() {
@@ -50,9 +49,7 @@ export default class App extends Component {
   adicionarAoCarrinho = (item) => {
     const carrinhoAtualizado = [...this.state.carrinho, item];
 
-    this.setState({ carrinho: carrinhoAtualizado }, () => {
-      this.atualizarTotalCarrinho();
-    });
+    this.setState({ carrinho: carrinhoAtualizado });
 
     toast.success("Serviço adicionado ao carrinho com sucesso!", {
       position: toast.POSITION.BOTTOM_RIGHT,
@@ -63,21 +60,12 @@ export default class App extends Component {
 
   deletarItemCarrinho = (id) => {
     const novoCarrinho = this.state.carrinho.filter((item) => item.id !== id);
-    this.setState({ carrinho: novoCarrinho }, () => {
-      this.atualizarTotalCarrinho();
-    });
+    this.setState({ carrinho: novoCarrinho });
     toast.success("Serviço removido do carrinho com sucesso!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
 
     localStorage.setItem("items", JSON.stringify(novoCarrinho));
-  };
-
-  atualizarTotalCarrinho = () => {
-    const totalCarrinho = this.state.carrinho.reduce((total, itemAtual) => {
-      return total + itemAtual.price;
-    }, 0);
-    this.setState({ totalCarrinho: totalCarrinho });
   };
 
   limparCarrinho = () => {
@@ -106,7 +94,6 @@ export default class App extends Component {
             carrinho={this.state.carrinho}
             trocarTela={this.trocarTela}
             deletarItem={this.deletarItemCarrinho}
-            totalCarrinho={this.state.totalCarrinho}
             limparCarrinho={this.limparCarrinho}
           />
         );

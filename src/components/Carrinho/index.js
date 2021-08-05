@@ -26,6 +26,10 @@ export default class Carrinho extends Component {
   };
 
   render() {
+    const totalCarrinho = this.props.carrinho.reduce((total, itemAtual) => {
+      return total + itemAtual.price;
+    }, 0);
+
     return (
       <BoxCards>
         <Titulo>Serviços adicionados</Titulo>
@@ -48,7 +52,7 @@ export default class Carrinho extends Component {
               );
             })}
             <TotaleBtn>
-              <Total>Total: R${this.props.totalCarrinho}</Total>
+              <Total>Total: R$ {totalCarrinho}</Total>
               <BtnContratar
                 onClick={this.handleBtnContratar}
                 disabled={this.state.estaContratado}
