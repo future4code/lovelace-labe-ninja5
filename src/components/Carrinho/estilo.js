@@ -29,7 +29,21 @@ export const Container = styled.div`
   width: 600px;
 
   @media screen and (max-width: 576px) {
-    width: 70%;
+    width: 100%;
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    > button {
+      margin-left: 15px;
+      padding: 10px;
+
+      > svg {
+        display: block;
+      }
+    }
   }
 `;
 

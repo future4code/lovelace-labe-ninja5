@@ -5,10 +5,11 @@ import ListaServico from "./Lista";
 export default class TelaServico extends Component {
   state = {
     tela: "lista",
+    idDetalhe: ""
   };
 
-  trocarTela = (tela) => {
-    this.setState({ tela: tela });
+  trocarTela = (tela, id) => {
+    this.setState({ tela: tela, idDetalhe: id });
   };
 
   renderizarTelaDetalhes = () => {
@@ -22,7 +23,7 @@ export default class TelaServico extends Component {
           />
         );
       case "detalhes":
-        return <DetalheServico trocarTela={this.trocarTela} />;
+        return <DetalheServico trocarTela={this.trocarTela} id={this.state.idDetalhe}/>;
     }
   };
 
