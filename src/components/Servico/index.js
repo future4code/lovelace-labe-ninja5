@@ -23,7 +23,12 @@ export default class TelaServico extends Component {
           />
         );
       case "detalhes":
-        return <DetalheServico trocarTela={this.trocarTela} id={this.state.idDetalhe}/>;
+        return <DetalheServico 
+        trocarTela={this.trocarTela} 
+        id={this.state.idDetalhe}
+        adicionarAoCarrinho={this.props.adicionarAoCarrinho}
+        carrinho={this.props.carrinho}
+        />;
     }
   };
 

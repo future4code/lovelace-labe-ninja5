@@ -1,7 +1,6 @@
 // Estilo do contratar serviço
 import styled from "styled-components";
 import { MdAddShoppingCart } from "react-icons/md";
-
 import { BsSearch } from "react-icons/bs";
 
 export const ContainerGeneral = styled.div`
