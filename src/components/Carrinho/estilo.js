@@ -23,6 +23,13 @@ export const Container = styled.div`
   padding: 10px;
   align-items: center;
   width: 600px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: space-between;
+  }
 `;
 
 export const Titulo = styled.h3`

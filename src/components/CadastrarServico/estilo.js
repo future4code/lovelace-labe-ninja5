@@ -2,11 +2,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin: 0 auto;
+  margin: 50px auto;
   display: flex;
   flex-direction: column;
-  max-width: 500px;
-  width: 100%;
 
   form {
     margin-top: 50px;
@@ -20,7 +18,7 @@ export const Container = styled.div`
     > input,
     select {
       margin-top: 10px;
-      padding: 5px 5px;
+      padding: 10px;
       border-radius: 10px;
       border: none;
       box-shadow: 0 0 3px 1px;
@@ -29,7 +27,6 @@ export const Container = styled.div`
 
   @media screen and (max-width: 576px) {
     max-width: 85%;
-    margin-bottom: 50px;
   }
 `;
 
