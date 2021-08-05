@@ -36,9 +36,11 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    this.setState({
-      carrinho: JSON.parse(localStorage.getItem("items")),
-    });
+    const carrinho = localStorage.getItem("items");
+
+    if (carrinho) {
+      this.setState({ carrinho: JSON.parse(carrinho) });
+    }
   }
 
   trocarTela = (tela) => {
