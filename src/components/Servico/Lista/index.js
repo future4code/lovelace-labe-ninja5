@@ -67,13 +67,15 @@ export default class ListaServico extends Component {
     const listServices = listaOredenada.map((servico, index) => {
       const { id, title, dueDate, price } = servico;
       const estaNoCarrinho = this.props.carrinho.some((item) => item.id === id);
+      const data = new Date(dueDate)
+      const dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
 
       return (
         <div key={index}>
           <CardList>
             <h4>{title}</h4>
             <p>
-              Até {dueDate} por <Price>R$ {price}</Price>
+              Até {dataFormatada} por <Price>R$ {price}</Price>
             </p>
             <ContainerButton>
               <Button onClick={() => this.props.trocarTela("detalhes")}>
