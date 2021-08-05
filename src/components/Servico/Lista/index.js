@@ -24,6 +24,7 @@ export default class ListaServico extends Component {
   state = {
     listService: [],
     estaCarregando: true,
+    ordenacao: "titulo"
   };
 
   componentDidMount() {
@@ -39,9 +40,31 @@ export default class ListaServico extends Component {
     }
   };
 
+  onChangeOrdenação = (e) => {
+    this.setState({ ordenacao: e.target.value })
+  }
+
   render() {
-    const { listService } = this.state;
-    const listServices = listService.map((servico, index) => {
+
+    const listaOredenada = this.state.listService.sort((a, b) => {
+      switch (this.state.ordenacao) {
+        case "titulo":
+          return a.title.localeCompare(b.title)
+        case "preco crescente":
+          return a.price - b.price
+        case "preco decrescente":
+          return b.price - a.price
+        case "prazo":
+          a = a.dueDate.split('/').reverse().join()
+          b = b.dueDate.split('/').reverse().join()
+          return a.localeCompare(b)
+        default:
+          return a.title.localeCompare(b.title)
+      }
+    })
+
+    // const { listService } = this.state;
+    const listServices = listaOredenada.map((servico, index) => {
       const { id, title, dueDate, price } = servico;
       const estaNoCarrinho = this.props.carrinho.some((item) => item.id === id);
 
@@ -68,6 +91,8 @@ export default class ListaServico extends Component {
       );
     });
 
+
+
     return (
       <>
         <ContainerFiltros>
@@ -78,11 +103,11 @@ export default class ListaServico extends Component {
 
           <Form>
             <label>Ordenar:</label>
-            <select>
-              <option>Título</option>
-              <option>Prazo</option>
-              <option>Preço Crescente</option>
-              <option>Preço Decrescente</option>
+            <select onChange={this.onChangeOrdenação}>
+              <option value="titulo">Título</option>
+              <option value="prazo">Prazo</option>
+              <option value="preco crescente">Preço Crescente</option>
+              <option value="preco decrescente">Preço Decrescente</option>
             </select>
           </Form>
           <Form>
@@ -90,8 +115,8 @@ export default class ListaServico extends Component {
             <input
               name={"valorMinimo"}
               type="number"
-              // onChange={}
-              // value={}
+            // onChange={}
+            // value={}
             />
           </Form>
           <Form>
@@ -99,8 +124,8 @@ export default class ListaServico extends Component {
             <input
               name={"valorMaximo"}
               type="number"
-              // onChange={}
-              // value={}
+            // onChange={}
+            // value={}
             />
           </Form>
         </ContainerFiltros>
