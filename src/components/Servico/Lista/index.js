@@ -109,7 +109,6 @@ export default class ListaServico extends Component {
         }
       });
 
-    // const { listService } = this.state;
     const listServices = listaFiltrada.map((servico, index) => {
       const { id, title, dueDate, price } = servico;
       const estaNoCarrinho = this.props.carrinho.some((item) => item.id === id);
@@ -119,27 +118,25 @@ export default class ListaServico extends Component {
       });
 
       return (
-        <div key={index}>
-          <CardList>
-            <h4>{title}</h4>
-            <p>
-              Até {dataFormatada} por <Price>R$ {price}</Price>
-            </p>
-            <ContainerButton>
-              <Button
-                onClick={() => this.props.trocarTela("detalhes", servico.id)}
-              >
-                Ver mais
-              </Button>
-              <Button
-                onClick={() => this.props.adicionarAoCarrinho(servico)}
-                disabled={estaNoCarrinho}
-              >
-                <AddCarrinho />
-              </Button>
-            </ContainerButton>
-          </CardList>
-        </div>
+        <CardList key={index}>
+          <h4>{title}</h4>
+          <p>
+            Até {dataFormatada} por <Price>R$ {price}</Price>
+          </p>
+          <ContainerButton>
+            <Button
+              onClick={() => this.props.trocarTela("detalhes", servico.id)}
+            >
+              Ver mais
+            </Button>
+            <Button
+              onClick={() => this.props.adicionarAoCarrinho(servico)}
+              disabled={estaNoCarrinho}
+            >
+              <AddCarrinho />
+            </Button>
+          </ContainerButton>
+        </CardList>
       );
     });
 

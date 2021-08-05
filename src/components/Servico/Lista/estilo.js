@@ -106,11 +106,17 @@ export const ContainerButton = styled.div`
 `;
 
 export const CardList = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #3f3b3b;
   border-radius: 10px;
   margin: 0 auto;
   color: #fff;
   padding: 30px 20px 20px;
+  height: 100%;
+  width: 100%;
 
   h4,
   p {

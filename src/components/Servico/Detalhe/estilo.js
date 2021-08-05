@@ -1,30 +1,29 @@
+// Estilo do detalhe do serviço
 import styled from "styled-components";
 import { MdAddShoppingCart } from "react-icons/md";
-import { BsFillTrashFill, BsFillReplyFill } from "react-icons/bs";
-
+import { BsFillReplyFill } from "react-icons/bs";
 
 export const ConteinerList = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-width: 100%
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 40px 0;
+`;
 export const AddCarrinho = styled(MdAddShoppingCart)`
-font-size: 28px;
-transition: transform 200ms ease;
-color: #fff;
+  font-size: 28px;
+  transition: transform 200ms ease;
+  color: #fff;
 
-@media screen and (max-width: 576px) {
-  font-size: 20px;
-}
+  @media screen and (max-width: 576px) {
+    font-size: 20px;
+  }
 `;
 
-
-
 export const Price = styled.span`
-color: #95de8e;
-font-size: 16px;
+  color: #95de8e;
+  font-size: 16px;
 `;
 export const Button = styled.button`
   padding: 20px 80px;
@@ -39,15 +38,14 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   margin: 20px 0;
- 
 
   &:hover {
     background-color: #d73743a6;
   }
 
-  &:disabled{
-      background-color: #8f8d8d;
-      cursor: default;
+  &:disabled {
+    background-color: #8f8d8d;
+    cursor: default;
   }
 
   @media screen and (max-width: 576px) {
@@ -61,7 +59,22 @@ export const IconeVoltar = styled(BsFillReplyFill)`
   margin: 0 10px;
 `;
 
+export const ContainerBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
 
+  @media screen and (max-width: 576px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 40px;
+  }
+`;
 
-// Estilo do detalhe do serviço
-
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
