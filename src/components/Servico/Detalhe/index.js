@@ -26,7 +26,7 @@ export default class DetalheServico extends Component {
       .then(res => {
         this.setState({ servico: res.data, listaPagamentos: res.data.paymentMethods })
       }).catch(err => {
-        // console.log(err.response)
+        console.log(err.response)
       })
   }
 

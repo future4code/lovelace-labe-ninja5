@@ -30,7 +30,7 @@ const Container = styled.div`
 
 export default class App extends Component {
   state = {
-    tela: "lista",
+    tela: "inicial",
     carrinho: [],
     totalCarrinho: null,
   };
