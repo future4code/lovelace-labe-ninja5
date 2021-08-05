@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import {
+  Button,
+  AddCarrinho,
+  BtnVoltar,
+  IconeVoltar,
+  ConteinerList,
+
+} from "./estilo";
 
 const url = "https://labeninjas.herokuapp.com/"
 
@@ -12,9 +20,15 @@ const headers = {
 
 export default class DetalheServico extends Component {
 
-  state ={
+  state = {
     servico: {},
-    listaPagamentos: []
+    listaPagamentos: [],
+    estaNoCarrinho: false,
+  }
+
+  desabilitaBotao = () => {
+    this.setState({estaNoCarrinho: true});
+    this.props.adicionarAoCarrinho(this.state.servico)
   }
 
   componentDidMount() {
@@ -33,24 +47,41 @@ export default class DetalheServico extends Component {
   render() {
 
     const listaPagamentos = this.state.listaPagamentos.map((item, index) => {
+      const data = new Date(item.dueDate)
       return <li key={index}>{item}</li>
     })
-    
+
+    const data = new Date(this.state.servico.dueDate);
+    const dataFormatada = data.toLocaleDateString("pt-BR", {
+      timeZone: "UTC",
+    });
+
+    const estaNoCarrinho = this.props.carrinho.some((item) => item.id === this.state.servico.id);
 
     return (
-      <div>
+
+
+      <ConteinerList>
         <h1>{this.state.servico.title}</h1>
         <p>{this.state.servico.description}</p>
         <p>Formas de Pagamento: </p>
         <ul>
           {listaPagamentos}
         </ul>
+        <p>Até {dataFormatada} por R${this.state.servico.price}</p>
+        <Button
+        onClick={this.desabilitaBotao}
+        disabled={estaNoCarrinho}
+        >
+          <AddCarrinho />
+          Adicionar ao carrinho
+        </Button>
+        <Button onClick={() => this.props.trocarTela("lista")}>
+          <IconeVoltar />
+          Voltar para lista de serviços
+        </Button>
+      </ConteinerList>
 
-
-        <button onClick={() => this.props.trocarTela("lista")}>
-          Ir para lista
-        </button>
-      </div>
     );
   }
 }
