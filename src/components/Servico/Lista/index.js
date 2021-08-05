@@ -11,6 +11,7 @@ import {
   Form,
   Lupa,
   Price,
+  FiltrosValores,
 } from "./estilo";
 
 const url = "https://labeninjas.herokuapp.com/jobs";
@@ -85,24 +86,26 @@ export default class ListaServico extends Component {
               <option>Preço Decrescente</option>
             </select>
           </Form>
-          <Form>
-            <label> Valor mínimo: </label>
-            <input
-              name={"valorMinimo"}
-              type="number"
-              // onChange={}
-              // value={}
-            />
-          </Form>
-          <Form>
-            <label>Valor máximo:</label>
-            <input
-              name={"valorMaximo"}
-              type="number"
-              // onChange={}
-              // value={}
-            />
-          </Form>
+          <FiltrosValores>
+            <Form>
+              <label> Valor mínimo: </label>
+              <input
+                name={"valorMinimo"}
+                type="number"
+                // onChange={}
+                // value={}
+              />
+            </Form>
+            <Form>
+              <label>Valor máximo:</label>
+              <input
+                name={"valorMaximo"}
+                type="number"
+                // onChange={}
+                // value={}
+              />
+            </Form>
+          </FiltrosValores>
         </ContainerFiltros>
 
         <ContainerGeneral>
