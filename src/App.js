@@ -35,6 +35,12 @@ export default class App extends Component {
     totalCarrinho: null,
   };
 
+  componentDidMount() {
+    this.setState({
+      carrinho: JSON.parse(localStorage.getItem("items")),
+    });
+  }
+
   trocarTela = (tela) => {
     this.setState({ tela: tela });
   };
@@ -49,6 +55,8 @@ export default class App extends Component {
     toast.success("Serviço adicionado ao carrinho com sucesso!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
+
+    localStorage.setItem("items", JSON.stringify(carrinhoAtualizado));
   };
 
   deletarItemCarrinho = (id) => {
@@ -59,6 +67,8 @@ export default class App extends Component {
     toast.success("Serviço removido do carrinho com sucesso!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
+
+    localStorage.setItem("items", JSON.stringify(novoCarrinho));
   };
 
   atualizarTotalCarrinho = () => {

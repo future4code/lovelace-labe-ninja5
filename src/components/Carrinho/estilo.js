@@ -10,6 +10,10 @@ export const BoxCards = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
+
+  @media screen and (max-width: 576px) {
+    padding: 20px;
+  }
 `;
 
 export const Container = styled.div`
@@ -24,11 +28,22 @@ export const Container = styled.div`
   align-items: center;
   width: 600px;
 
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
+
   > div {
     display: flex;
     align-items: center;
-    width: 30%;
-    justify-content: space-between;
+
+    > button {
+      margin-left: 15px;
+      padding: 10px;
+
+      > svg {
+        display: block;
+      }
+    }
   }
 `;
 
@@ -37,17 +52,34 @@ export const Titulo = styled.h3`
   padding: 30px;
   font-size: 32px;
   margin: 20px 0;
+
+  @media screen and (max-width: 576px) {
+    font-size: 22px;
+  }
 `;
 
 export const ItemTitulo = styled.p`
   margin-left: 20px;
+
+  @media screen and (max-width: 576px) {
+    margin-left: 10px;
+    font-size: 12px;
+  }
 `;
 
-export const Preco = styled.p``;
+export const Preco = styled.p`
+  @media screen and (max-width: 576px) {
+    font-size: 14px;
+  }
+`;
 
 export const Lixeira = styled(BsFillTrashFill)`
   color: #fff;
   font-size: 28px;
+
+  @media screen and (max-width: 576px) {
+    font-size: 12px;
+  }
 `;
 
 export const Button = styled.button`
@@ -79,10 +111,6 @@ export const BtnContratar = styled.button`
     background-color: #8f8d8d;
     cursor: default;
   }
-  @media screen and (max-width: 576px) {
-    margin: 0;
-    margin-top: 30px;
-  }
 `;
 
 export const TotaleBtn = styled.div`
@@ -91,6 +119,13 @@ export const TotaleBtn = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+    width: auto;
+    align-items: flex-start;
+    gap: 20px;
+  }
 `;
 
 export const Total = styled.p`
@@ -112,6 +147,10 @@ export const BtnVoltar = styled.button`
 
   &:hover {
     background-color: #d73743a6;
+  }
+
+  @media screen and (max-width: 576px) {
+    padding: 10px 40px;
   }
 `;
 

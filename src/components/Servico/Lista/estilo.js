@@ -30,6 +30,9 @@ export const ContainerFiltros = styled.div`
     border: none;
     padding: 10px;
     outline: none;
+    @media screen and (max-width: 576px) {
+      width: 100%;
+    }
   }
 
   select {
@@ -39,9 +42,21 @@ export const ContainerFiltros = styled.div`
     text-align: center;
     padding: 10px;
     outline: none;
+
+    @media screen and (max-width: 576px) {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+    gap: 20px;
   }
 `;
-
+export const FiltrosValores = styled.div`
+  display: flex;
+  gap: 20px;
+`;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -51,6 +66,10 @@ export const Form = styled.form`
   > label {
     font-size: 10px;
     margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
   }
 `;
 
@@ -73,6 +92,10 @@ export const ContainerBusca = styled.div`
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
   }
 `;
 export const Lupa = styled(BsSearch)``;

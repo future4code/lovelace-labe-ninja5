@@ -11,6 +11,7 @@ import {
   Form,
   Lupa,
   Price,
+  FiltrosValores,
 } from "./estilo";
 
 const url = "https://labeninjas.herokuapp.com/jobs";
@@ -27,7 +28,7 @@ export default class ListaServico extends Component {
     ordenacao: "titulo",
     valorMin: 0,
     valorMax: 10000,
-    inputBusca: ""
+    inputBusca: "",
   };
 
   componentDidMount() {
@@ -44,70 +45,78 @@ export default class ListaServico extends Component {
   };
 
   onChangeOrdenação = (e) => {
-    this.setState({ ordenacao: e.target.value })
-  }
+    this.setState({ ordenacao: e.target.value });
+  };
 
   onChangeValorMin = (e) => {
-    this.setState({ valorMin: e.target.value })
-  }
+    this.setState({ valorMin: e.target.value });
+  };
 
   onChangeValorMax = (e) => {
-    this.setState({ valorMax: e.target.value })
-  }
+    this.setState({ valorMax: e.target.value });
+  };
 
   onChangeBusca = (e) => {
-    this.setState({ inputBusca: e.target.value })
-  }
+    this.setState({ inputBusca: e.target.value });
+  };
 
   render() {
-
     const listaOredenada = this.state.listService.sort((a, b) => {
       switch (this.state.ordenacao) {
         case "titulo":
-          return a.title.localeCompare(b.title)
+          return a.title.localeCompare(b.title);
         case "preco crescente":
-          return a.price - b.price
+          return a.price - b.price;
         case "preco decrescente":
-          return b.price - a.price
+          return b.price - a.price;
         case "prazo":
-          a = a.dueDate.split('/').reverse().join()
-          b = b.dueDate.split('/').reverse().join()
-          return a.localeCompare(b)
+          a = a.dueDate.split("/").reverse().join();
+          b = b.dueDate.split("/").reverse().join();
+          return a.localeCompare(b);
         default:
-          return a.title.localeCompare(b.title)
+          return a.title.localeCompare(b.title);
       }
-    })
+    });
 
-    const listaFiltrada = listaOredenada.filter(servico => {
-      if (servico.price >= this.state.valorMin) {
-        return true
-      } else {
-        return false
-      }
-    }).filter(servico => {
-      if (servico.price <= this.state.valorMax) {
-        return true
-      } else {
-        return false
-      }
-    }).filter(servico => {
-      if (this.state.inputBusca) {
-        if (servico.title.toLowerCase().includes(this.state.inputBusca.toLocaleLowerCase())) {
-          return true
+    const listaFiltrada = listaOredenada
+      .filter((servico) => {
+        if (servico.price >= this.state.valorMin) {
+          return true;
         } else {
-          return false
+          return false;
         }
-      } else {
-        return true
-      }
-    })
+      })
+      .filter((servico) => {
+        if (servico.price <= this.state.valorMax) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .filter((servico) => {
+        if (this.state.inputBusca) {
+          if (
+            servico.title
+              .toLowerCase()
+              .includes(this.state.inputBusca.toLocaleLowerCase())
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return true;
+        }
+      });
 
     // const { listService } = this.state;
     const listServices = listaFiltrada.map((servico, index) => {
       const { id, title, dueDate, price } = servico;
       const estaNoCarrinho = this.props.carrinho.some((item) => item.id === id);
-      const data = new Date(dueDate)
-      const dataFormatada = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' })
+      const data = new Date(dueDate);
+      const dataFormatada = data.toLocaleDateString("pt-BR", {
+        timeZone: "UTC",
+      });
 
       return (
         <div key={index}>
@@ -117,7 +126,9 @@ export default class ListaServico extends Component {
               Até {dataFormatada} por <Price>R$ {price}</Price>
             </p>
             <ContainerButton>
-              <Button onClick={() => this.props.trocarTela("detalhes", servico.id)}>
+              <Button
+                onClick={() => this.props.trocarTela("detalhes", servico.id)}
+              >
                 Ver mais
               </Button>
               <Button
@@ -131,10 +142,6 @@ export default class ListaServico extends Component {
         </div>
       );
     });
-
-
-
-
 
     return (
       <>
@@ -158,24 +165,26 @@ export default class ListaServico extends Component {
               <option value="preco decrescente">Preço Decrescente</option>
             </select>
           </Form>
-          <Form>
-            <label> Valor mínimo: </label>
-            <input
-              name={"valorMinimo"}
-              type="number"
-              onChange={this.onChangeValorMin}
-              value={this.state.valorMin}
-            />
-          </Form>
-          <Form>
-            <label>Valor máximo:</label>
-            <input
-              name={"valorMaximo"}
-              type="number"
-              onChange={this.onChangeValorMax}
-              value={this.state.valorMax}
-            />
-          </Form>
+          <FiltrosValores>
+            <Form>
+              <label> Valor mínimo: </label>
+              <input
+                name={"valorMinimo"}
+                type="number"
+                onChange={this.onChangeValorMin}
+                value={this.state.valorMin}
+              />
+            </Form>
+            <Form>
+              <label>Valor máximo:</label>
+              <input
+                name={"valorMaximo"}
+                type="number"
+                onChange={this.onChangeValorMax}
+                value={this.state.valorMax}
+              />
+            </Form>
+          </FiltrosValores>
         </ContainerFiltros>
 
         <ContainerGeneral>
