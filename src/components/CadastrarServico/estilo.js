@@ -54,7 +54,7 @@ export const ButtonBox = styled.div`
 export const ContainerSelect = styled.div`
   margin-top: 10px;
   
-  &:first-child{
+  &:first-child{  
     border-radius: 10px;
     box-shadow: 0 0 3px 1px;
     font-size: 0.8rem;

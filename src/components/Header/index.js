@@ -9,7 +9,7 @@ export default class Header extends Component {
     return (
       <Cabecalho>
         <BoxLogo onClick={() => this.props.trocarTela("inicial")}>
-          <img src={Logo} />
+          <img src={Logo} alt=''/>
           <NomeSite>LabeNinjas</NomeSite>
         </BoxLogo>
 

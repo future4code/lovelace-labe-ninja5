@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DetalheServico from "./Detalhe";
+// import DetalheServico from "./Detalhe";
 import ListaServico from "./Lista";
 
 export default class TelaServico extends Component {
@@ -17,11 +17,14 @@ export default class TelaServico extends Component {
         return (
           <ListaServico
             carrinho={this.props.carrinho}
+            getJobsById={this.props.getJobsById}
             adicionarAoCarrinho={this.props.adicionarAoCarrinho}
+            listaDeProdutos={this.props.listaDeProdutos}
+            trocarTela={this.props.trocarTela}
           />
         );
-      case "detalhes":
-        return <DetalheServico trocarTela={this.trocarTela} />;
+      default:
+        return null;
     }
   };
 

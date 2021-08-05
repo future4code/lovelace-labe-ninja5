@@ -11,7 +11,7 @@ import {
 const url = "https://labeninjas.herokuapp.com/jobs";
 const headers = {
   headers: {
-    Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e",
+    Authorization: "553d7058-9437-416b-b020-7eaaa0867ceb"
   },
 };
 
@@ -28,9 +28,7 @@ export default class ListaServico extends Component {
     try {
       const res = await axios.get(url, headers);
       this.setState({ listService: res.data.jobs });
-      console.log(res.data.jobs);
     } catch (err) {
-      console.log(err);
     }
   };
 
@@ -49,7 +47,13 @@ export default class ListaServico extends Component {
               {price}
             </p>
             <ContainerButton>
-              <Button onClick={() => this.props.trocarTela("detalhes")}>
+              <Button
+                onClick={() => {
+                  this.props.getJobsById(id)
+                  this.props.trocarTela("detalhes")
+                }
+                }
+              >
                 <font color="white">Ir para detalhe</font>
               </Button>
               <Button
