@@ -38,10 +38,12 @@ export default class Carrinho extends Component {
               return (
                 <Container key={item.id}>
                   <ItemTitulo>{item.title}</ItemTitulo>
-                  <Preco>R${item.price}</Preco>
-                  <Button onClick={() => this.props.deletarItem(item.id)}>
-                    <Lixeira />
-                  </Button>
+                  <div>
+                    <Preco>R${item.price}</Preco>
+                    <Button onClick={() => this.props.deletarItem(item.id)}>
+                      <Lixeira />
+                    </Button>
+                  </div>
                 </Container>
               );
             })}

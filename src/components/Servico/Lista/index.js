@@ -16,7 +16,7 @@ import {
 const url = "https://labeninjas.herokuapp.com/jobs";
 const headers = {
   headers: {
-    Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e",
+    Authorization: "553d7058-9437-416b-b020-7eaaa0867ceb",
   },
 };
 
@@ -24,7 +24,10 @@ export default class ListaServico extends Component {
   state = {
     listService: [],
     estaCarregando: true,
-    ordenacao: "titulo"
+    ordenacao: "titulo",
+    valorMin: 0,
+    valorMax: 10000,
+    inputBusca: ""
   };
 
   componentDidMount() {
@@ -42,6 +45,18 @@ export default class ListaServico extends Component {
 
   onChangeOrdenação = (e) => {
     this.setState({ ordenacao: e.target.value })
+  }
+
+  onChangeValorMin = (e) => {
+    this.setState({ valorMin: e.target.value })
+  }
+
+  onChangeValorMax = (e) => {
+    this.setState({ valorMax: e.target.value })
+  }
+
+  onChangeBusca = (e) => {
+    this.setState({ inputBusca: e.target.value })
   }
 
   render() {
@@ -63,12 +78,36 @@ export default class ListaServico extends Component {
       }
     })
 
+    const listaFiltrada = listaOredenada.filter(servico => {
+      if (servico.price >= this.state.valorMin) {
+        return true
+      } else {
+        return false
+      }
+    }).filter(servico => {
+      if (servico.price <= this.state.valorMax) {
+        return true
+      } else {
+        return false
+      }
+    }).filter(servico => {
+      if (this.state.inputBusca) {
+        if (servico.title.toLowerCase().includes(this.state.inputBusca.toLocaleLowerCase())) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return true
+      }
+    })
+
     // const { listService } = this.state;
-    const listServices = listaOredenada.map((servico, index) => {
+    const listServices = listaFiltrada.map((servico, index) => {
       const { id, title, dueDate, price } = servico;
       const estaNoCarrinho = this.props.carrinho.some((item) => item.id === id);
       const data = new Date(dueDate)
-      const dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
+      const dataFormatada = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' })
 
       return (
         <div key={index}>
@@ -78,7 +117,7 @@ export default class ListaServico extends Component {
               Até {dataFormatada} por <Price>R$ {price}</Price>
             </p>
             <ContainerButton>
-              <Button onClick={() => this.props.trocarTela("detalhes")}>
+              <Button onClick={() => this.props.trocarTela("detalhes", servico.id)}>
                 Ver mais
               </Button>
               <Button
@@ -95,12 +134,19 @@ export default class ListaServico extends Component {
 
 
 
+
+
     return (
       <>
         <ContainerFiltros>
           <ContainerBusca>
             <Lupa />
-            <input placeholder="Busca" type="text"></input>
+            <input
+              placeholder="Busca"
+              type="text"
+              value={this.state.inputBusca}
+              onChange={this.onChangeBusca}
+            />
           </ContainerBusca>
 
           <Form>
@@ -117,8 +163,8 @@ export default class ListaServico extends Component {
             <input
               name={"valorMinimo"}
               type="number"
-            // onChange={}
-            // value={}
+              onChange={this.onChangeValorMin}
+              value={this.state.valorMin}
             />
           </Form>
           <Form>
@@ -126,8 +172,8 @@ export default class ListaServico extends Component {
             <input
               name={"valorMaximo"}
               type="number"
-            // onChange={}
-            // value={}
+              onChange={this.onChangeValorMax}
+              value={this.state.valorMax}
             />
           </Form>
         </ContainerFiltros>
