@@ -71,5 +71,7 @@ Concluído ✅
 
 x-special/nautilus-clipboard
 copy
-file:///home/israel/Downloads/Labeninja%20(2).pdf
+file:///home/israel/Imagens/figma.png
+![figma](https://user-images.githubusercontent.com/85313042/128554767-c4943426-d4c5-4406-b655-19b4a6e38d13.png)
+
 
