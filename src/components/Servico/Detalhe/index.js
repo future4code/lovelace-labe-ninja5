@@ -7,6 +7,9 @@ import {
   ConteinerList,
   ContainerBtn,
   Container,
+  Titulo,
+  Descricao,
+  Pagamentos,
 } from "./estilo";
 
 const url = "https://labeninjas.herokuapp.com/";
@@ -47,10 +50,7 @@ export default class DetalheServico extends Component {
   };
 
   render() {
-    const listaPagamentos = this.state.listaPagamentos.map((item, index) => {
-      const data = new Date(item.dueDate);
-      return <li key={index}>{item}</li>;
-    });
+    const listaPagamentos = this.state.listaPagamentos.join(", ");
 
     const data = new Date(this.state.servico.dueDate);
     const dataFormatada = data.toLocaleDateString("pt-BR", {
@@ -64,22 +64,27 @@ export default class DetalheServico extends Component {
     return (
       <Container>
         <ConteinerList>
-          <h1>{this.state.servico.title}</h1>
-          <p>{this.state.servico.description}</p>
-          <p>Formas de Pagamento: </p>
-          <ul>{listaPagamentos}</ul>
+          <Titulo>{this.state.servico.title}</Titulo>
+          <Descricao>
+            <p>Descrição:</p>
+            <p>{this.state.servico.description}</p>
+          </Descricao>
+          <Pagamentos>
+            <p>Formas de Pagamento: </p>
+            <p>{listaPagamentos}</p>
+          </Pagamentos>
           <p>
-            Até {dataFormatada} por R${this.state.servico.price}
+            Prazo: Até {dataFormatada} por R${this.state.servico.price}
           </p>
         </ConteinerList>
         <ContainerBtn>
-          <Button onClick={this.desabilitaBotao} disabled={estaNoCarrinho}>
-            <AddCarrinho />
-            Adicionar ao carrinho
-          </Button>
           <Button onClick={() => this.props.trocarTela("lista")}>
             <IconeVoltar />
             Voltar para lista de serviços
+          </Button>
+          <Button onClick={this.desabilitaBotao} disabled={estaNoCarrinho}>
+            <AddCarrinho />
+            Adicionar ao carrinho
           </Button>
         </ContainerBtn>
       </Container>

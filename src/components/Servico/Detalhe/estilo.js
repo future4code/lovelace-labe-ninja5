@@ -9,7 +9,8 @@ export const ConteinerList = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  margin: 40px 0;
+  margin: 20px 0;
+  gap: 20px;
 `;
 export const AddCarrinho = styled(MdAddShoppingCart)`
   font-size: 28px;
@@ -77,4 +78,27 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: 1;
+`;
+
+export const Titulo = styled.h1`
+  margin: 20px 0;
+`;
+
+export const Descricao = styled.div`
+  display: flex;
+
+  p:first-child {
+    margin-right: 10px;
+  }
+`;
+
+export const Pagamentos = styled(Descricao)`
+  > ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: 10px;
+  }
 `;

@@ -5,7 +5,7 @@ import ListaServico from "./Lista";
 export default class TelaServico extends Component {
   state = {
     tela: "lista",
-    idDetalhe: ""
+    idDetalhe: "",
   };
 
   trocarTela = (tela, id) => {
@@ -23,16 +23,18 @@ export default class TelaServico extends Component {
           />
         );
       case "detalhes":
-        return <DetalheServico 
-        trocarTela={this.trocarTela} 
-        id={this.state.idDetalhe}
-        adicionarAoCarrinho={this.props.adicionarAoCarrinho}
-        carrinho={this.props.carrinho}
-        />;
+        return (
+          <DetalheServico
+            trocarTela={this.trocarTela}
+            id={this.state.idDetalhe}
+            adicionarAoCarrinho={this.props.adicionarAoCarrinho}
+            carrinho={this.props.carrinho}
+          />
+        );
     }
   };
 
   render() {
-    return <div>{this.renderizarTelaDetalhes()}</div>;
+    return this.renderizarTelaDetalhes();
   }
 }
