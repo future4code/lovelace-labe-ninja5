@@ -34,3 +34,31 @@ Caíque Souto Lima, Eunice Jesus Souza, Ingrid Erci Flack da Silva, Israel Marti
 Concluído ✅
 
 ## Imagens
+
+
+## Tela inicial 
+
+![image](https://user-images.githubusercontent.com/8032317/128553046-d449f8e0-4ea2-4c4f-8a22-a5e73cecea9d.png)
+
+## Tela para cadastrar serviço
+
+![image](https://user-images.githubusercontent.com/8032317/128553114-cb199623-4f50-49c8-8046-81cfd58bfa34.png)
+
+## Tela para contratar serviços
+
+![image](https://user-images.githubusercontent.com/8032317/128553200-44a89e7f-e44e-499e-b646-f0e3cee62b61.png)
+
+## Tela com lista de serviços
+
+![image](https://user-images.githubusercontent.com/8032317/128553253-ae158de3-e568-4cdd-a47c-66f532db52b8.png)
+
+## Tela com carrinho
+
+![image](https://user-images.githubusercontent.com/8032317/128553299-6d4943df-ed83-440d-8a52-f519a731d5d9.png)
+
+## Tela com carrinho vazio
+
+![image](https://user-images.githubusercontent.com/8032317/128553365-0e0a841d-741e-49c8-b46e-52640d1806e9.png)
+
+
+
