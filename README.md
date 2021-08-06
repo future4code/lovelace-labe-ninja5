@@ -69,4 +69,7 @@ Concluído ✅
 
 ## Link do Protótipo (utilizamos o Figma)
 
-https://labenualunos.slack.com/files/U023Z1E6FB7/F02AN8H57GC/labeninja.pdf
+x-special/nautilus-clipboard
+copy
+file:///home/israel/Downloads/Labeninja%20(2).pdf
+
