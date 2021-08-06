@@ -60,5 +60,10 @@ Concluído ✅
 
 ![image](https://user-images.githubusercontent.com/8032317/128553365-0e0a841d-741e-49c8-b46e-52640d1806e9.png)
 
+## Telas de organização e divisão das tarefas
+
+![trello](https://user-images.githubusercontent.com/8032317/128554010-b71058a0-73f7-43ec-b7ea-07baf55c346d.png)
+![trello1](https://user-images.githubusercontent.com/8032317/128554015-33563647-7d62-4221-bd27-17212b14d213.png)
+![trello2](https://user-images.githubusercontent.com/8032317/128554018-a83f22d4-76e0-416f-8afd-afad93dfd396.png)
 
 
