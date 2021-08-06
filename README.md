@@ -67,6 +67,6 @@ Concluído ✅
 ![trello2](https://user-images.githubusercontent.com/8032317/128554018-a83f22d4-76e0-416f-8afd-afad93dfd396.png)
 
 
-## Protótipo 
+## Link do Protótipo (utilizamos o Figma)
 
 https://labenualunos.slack.com/files/U023Z1E6FB7/F02AN8H57GC/labeninja.pdf
